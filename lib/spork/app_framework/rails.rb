@@ -56,7 +56,7 @@ class Spork::AppFramework::Rails < Spork::AppFramework
     Spork.trap_method(::ActiveModel::Observing::ClassMethods, :instantiate_observers)
     Spork.each_run { ActiveRecord::Base.establish_connection rescue nil } if Object.const_defined?(:ActiveRecord)
 
-
+=begin
     AbstractController::Helpers::ClassMethods.module_eval do
       def helper(*args, &block)
         ([args].flatten - [:all]).each do |arg|
@@ -77,6 +77,7 @@ class Spork::AppFramework::Rails < Spork::AppFramework
         end
       end
     end
+=end
   end
 
   def self.present?
